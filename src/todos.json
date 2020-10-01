@@ -1,0 +1,41 @@
+{
+  "todos": [
+    {
+      "title": "Tarea 1",
+      "responsible": "Marc",
+      "descriton": "Cocinar",
+      "priority": "alta"
+    },
+    {
+      "title": "Tarea 2",
+      "responsible": "Franco",
+      "descriton": "Limpiar Cocina",
+      "priority": "alta"
+    },
+    {
+      "title": "Tarea 3",
+      "responsible": "Marc",
+      "descriton": "Boludear",
+      "priority": "baja"
+    },
+    {
+      "title": "Tarea 4",
+      "responsible": "Franco",
+      "descriton": "Hacer las compras",
+      "priority": "media"
+    },
+    {
+      "title": "Tarea 5",
+      "responsible": "Marc",
+      "descriton": "Sacar la basura",
+      "priority": "media"
+    },
+    {
+      "title": "Tarea 6",
+      "responsible": "Franco",
+      "descriton": "Boludear",
+      "priority": "baja"
+    }
+  ]
+
+}
