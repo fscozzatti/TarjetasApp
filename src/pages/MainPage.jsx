@@ -1,34 +1,42 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
-//import CityList from './../componets/CityList'
+import PropTypes from 'prop-types'
+import CardList from './../components/CardList'
 import AppFrame from './../components/AppFrame'
 import Paper from '@material-ui/core/Paper'
 //import { getCities } from './../services/serviceCities'
 
-const MainPage = () => {
 
-   //const history = useHistory()
+const MainPage = ({ todos }) => {
 
-    /*const onClickHandler = React.useCallback((city, countryCode) => {
-        history.push(`/city/${countryCode}/${city}`)
-    }, [history])*/
+   const history = useHistory()
 
-    //const cities = getCities()
+    const onClickHandler = useCallback((cardid) => {
+        history.push(`/cardid/${cardid}`)
+    }, [history])
+
 
     return (
         <AppFrame>
             <Paper elevation={3}>
+                <CardList todos={todos}
+                    onClickCard={onClickHandler} />
             </Paper>
         </AppFrame>
     )
 }
 
+MainPage.propTypes = {
+    todos: PropTypes.arrayOf(
+        PropTypes.shape({
+            cardid: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            responsible: PropTypes.string.isRequired,
+            descriton: PropTypes.string.isRequired,
+            priority: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+}
 
 export default MainPage
-/*
-                <CityList
-                    cities={cities}
-                    onClickCity={onClickHandler}>
-                </CityList>
-                */
 

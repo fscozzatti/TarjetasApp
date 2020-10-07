@@ -4,6 +4,7 @@ import WelcomePage from './pages/WelcomePage'
 import MainPage from './pages/MainPage'
 import CardPage from './pages/CardPage'
 import NotFoundPage from './pages/NotFoundPage'
+import { todos } from './todos.json';
 
 const App2 = () => {
 
@@ -14,11 +15,11 @@ const App2 = () => {
                         <WelcomePage></WelcomePage>
                     </Route>
                     <Route path="/main">
-                        <MainPage>
+                        <MainPage todos={todos}>
                         </MainPage>
                     </Route>
-                    <Route path="/card/:cardId">
-                        <CardPage
+                    <Route path="/cardid/:cardid">
+                        <CardPage todos={todos}
                         ></CardPage>
                     </Route>
                     <Route>

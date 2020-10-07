@@ -1,36 +1,42 @@
 {
   "todos": [
     {
+      "cardid": 1,
       "title": "Tarea 1",
       "responsible": "Marc",
       "descriton": "Cocinar",
       "priority": "alta"
     },
     {
+      "cardid": 2,
       "title": "Tarea 2",
       "responsible": "Franco",
       "descriton": "Limpiar Cocina",
       "priority": "alta"
     },
     {
+      "cardid": 3,
       "title": "Tarea 3",
       "responsible": "Marc",
       "descriton": "Boludear",
       "priority": "baja"
     },
     {
+      "cardid": 4,
       "title": "Tarea 4",
       "responsible": "Franco",
       "descriton": "Hacer las compras",
       "priority": "media"
     },
     {
+      "cardid": 5,
       "title": "Tarea 5",
       "responsible": "Marc",
       "descriton": "Sacar la basura",
       "priority": "media"
     },
     {
+      "cardid": 6,
       "title": "Tarea 6",
       "responsible": "Franco",
       "descriton": "Boludear",
