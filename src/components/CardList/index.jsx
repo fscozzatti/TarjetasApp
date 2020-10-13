@@ -38,22 +38,22 @@ const CardList = ({ todos, onClickCard }) => {
       })
     return (
         <div className="App">
-            <nav className="navbar navbar-dark bg-dark">
-              <a href="" className="text-white">
-                Tarjetas
-                <span className="badge badge-pill badge-light ml-2">
-                {todos2.length}
-                </span>
-              </a>
-            </nav>
-            <div className="container">
-                <div className="col-md-12">
-                  <div className="row">
-                  { todos2 }
-                  </div>
-                </div>
+          <nav className="navbar navbar-dark bg-dark">
+            <a href="" className="text-white">
+              Tarjetas
+              <span className="badge badge-pill badge-light ml-2">
+              {todos2.length}
+              </span>
+            </a>
+          </nav>
+          <div className="container">
+            <div className="col-md-12">
+              <div className="row">
+              { todos2 }
               </div>
+            </div>
           </div>
+        </div>
       )
 }
 
@@ -71,36 +71,3 @@ CardList.propTypes = {
 }
 
 export default CardList
-
-/*            <Grid container
-                justify="space-around"
-                alignItems="center">
-                {
-                    todos.map((todo) => renderCardItem( todo.title, todo.descriton, todo.priority, todo.responsible))
-                }
-            </Grid>
-            */
- /*          todos.map((todo, i) => {
-            console.log( `${todo.title}, ${i}`)    
-            return (
-            <div className="col-md-4">
-                <div className="card mt-4">
-                    <div className="card-header">
-                    <h3>{todo.title}</h3>
-                    <span className="badge badge-pill badge-info ml-2">
-                        {todo.priority}
-                    </span>
-                    </div>
-                    <div className="card-body">
-                    <p>{todo.descriton}</p>
-                    <p><mark>{todo.responsible}</mark></p>
-                    </div>
-                    <div className="card-footer">
-                    <button className="btn btn-success">
-                        Borrar
-                    </button>
-                    </div>
-                </div>
-            </div>
-        )
-})*/

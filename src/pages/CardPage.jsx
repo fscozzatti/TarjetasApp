@@ -4,9 +4,15 @@ import { useParams } from 'react-router-dom'
 import AppFrame from './../components/AppFrame'
 import CardEdit from './../components/CardEdit'
 
-const CardPage = ({ todos }) => {
+
+
+
+const CardPage = ({ todos , onHandleSubmit }) => {
     const { cardid } = useParams()
+
     const { title, responsible, descriton, priority } = todos.find( i => i.cardid === Number(cardid))
+
+
 
     return (
         <AppFrame>
@@ -14,7 +20,9 @@ const CardPage = ({ todos }) => {
                 title={title}
                 responsible={responsible}
                 descriton={descriton}
-                priority={priority}></CardEdit>
+                priority={priority}
+                onHandleSubmit={onHandleSubmit}
+                ></CardEdit>
         </AppFrame>
     )
 }
@@ -29,6 +37,7 @@ CardPage.propTypes = {
             priority: PropTypes.string.isRequired,
         })
     ).isRequired,
+    onHandleSubmit: PropTypes.func.isRequired,
 }
 
 
