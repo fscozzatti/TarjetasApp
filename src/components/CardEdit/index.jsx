@@ -62,6 +62,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
                         name='title'
                         onChange={handleChange} 
                         value={titulo}
+                        required
                         />
                     </div>                     
                     <div className="form-group">
@@ -70,6 +71,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
                         name='priority'
                         onChange={handleChange} 
                         value={prioridad}
+                        required
                         >
                           <option>baja</option>
                           <option>media</option>
@@ -82,7 +84,8 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
                         type='text'
                         name='descriton'
                         value={descripcion}
-                        onChange={handleChange} 
+                        onChange={handleChange}
+                        required 
                         />
                     </div>
                     <div className="form-group">
@@ -92,6 +95,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
                         name='responsible'
                         value={responsable}
                         onChange={handleChange}
+                        required
                         />
                     </div>
 
