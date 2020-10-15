@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper'
 //import { getCities } from './../services/serviceCities'
 
 
-const MainPage = ({ todos }) => {
+const MainPage = ({ todos, onHandleDelete }) => {
 
    const history = useHistory()
 
@@ -20,7 +20,8 @@ const MainPage = ({ todos }) => {
         <AppFrame>
             <Paper elevation={3}>
                 <CardList todos={todos}
-                    onClickCard={onClickHandler} />
+                    onClickCard={onClickHandler} 
+                    onHandleDelete={onHandleDelete}/>
             </Paper>
         </AppFrame>
     )

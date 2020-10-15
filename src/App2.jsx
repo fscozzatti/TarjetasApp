@@ -19,15 +19,28 @@ const App2 = () => {
             responsible: responsable,
             priority: prioridad,
             descriton: descripcion,
+            }
+        if (index !== -1 ){
+            todos1.splice( index, 1, todo)
+            setTodos1(todos1)               
+        }else{
+            //[ todos ] = [ ...todos, todo]
+            setTodos1([ ...todos1, todo])      
         }
-        /*todos1[index].title = titulo
-        todos1[index].responsible = responsable
-        todos1[index].descriton = descripcion
-        todos1[index].priority = prioridad*/
-        todos.splice( index, 1, todo)
-        setTodos1(todos)
     }
     
+    const handleDelete = ( cardid ) =>{
+        const isLargeNumber = (element) => element.cardid === cardid;
+        const index = todos1.findIndex(isLargeNumber)
+        todos1.splice( index, 1)
+        for ( var i = 0; i < todos1.length ; i++) {
+            const j = i + 1
+            todos1[i].cardid = j
+        }
+        setTodos1([...todos1]) 
+    }
+
+
     return (
             <Router>
                 <Switch>
@@ -35,15 +48,14 @@ const App2 = () => {
                         <WelcomePage></WelcomePage>
                     </Route>
                     <Route path="/main">
-                        <MainPage todos={todos1}>
+                        <MainPage todos={todos1}
+                          onHandleDelete={ (cardid) => handleDelete(cardid)}  
+                        >
                         </MainPage>
                     </Route>
                     <Route path="/cardid/:cardid">
                         <CardPage todos={todos1}
-                        onHandleSubmit={ (cardid, titulo, responsable, descripcion, prioridad) => {
-                            console.log( 'hola',cardid, titulo, responsable, descripcion, prioridad)
-                            handleSubmit(cardid, titulo, responsable, descripcion, prioridad)
-                        }}
+                        onHandleSubmit={ (cardid, titulo, responsable, descripcion, prioridad) => handleSubmit(cardid, titulo, responsable, descripcion, prioridad)}   
                         ></CardPage>
                     </Route>
                     <Route>

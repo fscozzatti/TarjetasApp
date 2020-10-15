@@ -39,9 +39,9 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
     return (
       <div className="App">
         <nav className="navbar navbar-dark bg-dark">
-          <a href="" className="text-white">
+          <div className="text-white">
             Editar Tarjeta
-          </a>
+          </div>
         </nav>
         <div className="containerCard">
           <Grid  container           

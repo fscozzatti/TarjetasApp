@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
 
-const CardList = ({ todos, onClickCard }) => {
-    
+
+const CardList = ({ todos, onClickCard, onHandleDelete }) => {
+
     const todos2 = todos.map((todo, i) => {
         return (
           <div className="col-md-4" key={todo.cardid}>
@@ -26,7 +27,7 @@ const CardList = ({ todos, onClickCard }) => {
                 justify="center"
                 alignItems="center">
                     <Grid item>
-                        <button className="btn btn-danger" >
+                        <button className="btn btn-danger" onClick={() => onHandleDelete(todo.cardid)}>
                             Eliminar
                         </button>
                     </Grid>
@@ -39,12 +40,13 @@ const CardList = ({ todos, onClickCard }) => {
     return (
         <div className="App">
           <nav className="navbar navbar-dark bg-dark">
-            <a href="" className="text-white">
+            <div href="" className="text-white">
               Tarjetas
               <span className="badge badge-pill badge-light ml-2">
               {todos2.length}
               </span>
-            </a>
+            </div>
+            <button type="button" className="btn-primary" onClick={() => onClickCard(0)}>Insertar Tarjeta</button>
           </nav>
           <div className="container">
             <div className="col-md-12">
