@@ -1,15 +1,14 @@
 import React, { useCallback } from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Alert from '@material-ui/lab/Alert'
 import CardList from './../components/CardList'
 import AppFrame from './../components/AppFrame'
 import Paper from '@material-ui/core/Paper'
-//import { getCities } from './../services/serviceCities'
 
 
-const MainPage = ({ todos, onHandleDelete }) => {
-
-   const history = useHistory()
+const MainPage = ({ todos, onHandleDelete, error, onSetError }) => {
+    const history = useHistory()
 
     const onClickHandler = useCallback((cardid) => {
         history.push(`/cardid/${cardid}`)
@@ -18,6 +17,9 @@ const MainPage = ({ todos, onHandleDelete }) => {
 
     return (
         <AppFrame>
+            {
+                error && <Alert onClose={() => onSetError(null)} severity="error">{error}</Alert>
+            }
             <Paper elevation={3}>
                 <CardList todos={todos}
                     onClickCard={onClickHandler} 

@@ -1,14 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
 import WelcomePage from './pages/WelcomePage'
 import MainPage from './pages/MainPage'
 import CardPage from './pages/CardPage'
 import NotFoundPage from './pages/NotFoundPage'
-import { todos } from './todos.json';
-
 
 const App2 = () => {
-    const [ todos1, setTodos1 ] = useState(todos)
+    
+    const [ todos1, setTodos1 ] = useState([])
+    const [error, setError] = useState(null)
+    useEffect(() => {
+      let ignore = false;
+  
+      async function fetchData() {
+        try {
+            const response = await axios({
+                url: 'http://localhost:3001/todos',
+                method: 'get'
+            })
+            if (!ignore){
+                setTodos1(response.data)
+            }
+        } catch (error) {
+            if (error.response) { // Errores que nos responde el server
+                setError("Ha ocurrido un error en el servidor del clima")
+            } else if (error.request) { // Errores que suceden por no llegar al server
+                setError("Verifique la conexión a internet")
+            } else { // Errores imprevistos
+                setError("Error al cargar los datos")
+            }                
+        }        
+      }
+  
+      fetchData()
+      return () => { ignore = true; }
+
+    }, []);
+
 
     const handleSubmit = ( cardid, titulo, responsable, descripcion, prioridad ) => {
         const isLargeNumber = (element) => element.cardid === cardid;
@@ -40,16 +69,18 @@ const App2 = () => {
         setTodos1([...todos1]) 
     }
 
-
     return (
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <WelcomePage></WelcomePage>
+                        <WelcomePage
+                        ></WelcomePage>
                     </Route>
                     <Route path="/main">
                         <MainPage todos={todos1}
-                          onHandleDelete={ (cardid) => handleDelete(cardid)}  
+                          onHandleDelete={ (cardid) => handleDelete(cardid)}
+                          error={error}
+                          onSetError={(val) => setError(val)}
                         >
                         </MainPage>
                     </Route>

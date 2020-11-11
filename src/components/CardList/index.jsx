@@ -43,7 +43,7 @@ const CardList = ({ todos, onClickCard, onHandleDelete }) => {
             <div href="" className="text-white">
               Tarjetas
               <span className="badge badge-pill badge-light ml-2">
-              {todos2.length}
+                {todos2.length}
               </span>
             </div>
             <button type="button" className="btn-primary" onClick={() => onClickCard(0)}>Insertar Tarjeta</button>

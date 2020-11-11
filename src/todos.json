@@ -18,7 +18,7 @@
       "cardid": 3,
       "title": "Tarea 3",
       "responsible": "Marc",
-      "descriton": "Boludear",
+      "descriton": "Barrer",
       "priority": "baja"
     },
     {
@@ -39,7 +39,7 @@
       "cardid": 6,
       "title": "Tarea 6",
       "responsible": "Franco",
-      "descriton": "Boludear",
+      "descriton": "Hacer la cama",
       "priority": "baja"
     }
   ]
