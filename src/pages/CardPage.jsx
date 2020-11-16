@@ -8,17 +8,16 @@ import CardEdit from './../components/CardEdit'
 
 
 const CardPage = ({ todos , onHandleSubmit }) => {
-    const { cardid } = useParams()
+    const { id } = useParams()
     const newid = todos.length + 1
-    let todo = { cardid:newid, title: '', responsible:'', descriton:'', priority:'alta'}
-    if( Number(cardid) !== 0){
-        todo = todos.find( i => i.cardid === Number(cardid)) 
+    let todo = { id:newid, title: '', responsible:'', descriton:'', priority:'alta'}
+    if( Number(id) !== 0){
+        todo = todos.find( i => i.id === Number(id)) 
     }
-
 
     return (
         <AppFrame>
-            <CardEdit cardid={todo.cardid}
+            <CardEdit id={todo.id}
                 title={todo.title}
                 responsible={todo.responsible}
                 descriton={todo.descriton}
@@ -32,7 +31,7 @@ const CardPage = ({ todos , onHandleSubmit }) => {
 CardPage.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            cardid: PropTypes.number,
+            id: PropTypes.number,
             title: PropTypes.string.isRequired,
             responsible: PropTypes.string.isRequired,
             descriton: PropTypes.string.isRequired,

@@ -8,10 +8,10 @@ const CardList = ({ todos, onClickCard, onHandleDelete }) => {
 
     const todos2 = todos.map((todo, i) => {
         return (
-          <div className="col-md-4" key={todo.cardid}>
+          <div className="col-md-4" key={todo.id}>
             <div className="card mt-4">
-              <div className="card-header" onClick={() => onClickCard(todo.cardid)}>
-                <h3 className="card-title">Nro. de Tarjeta: {todo.cardid}</h3>
+              <div className="card-header" onClick={() => onClickCard(todo.id)}>
+                <h3 className="card-title">Nro. de Tarjeta: {todo.id}</h3>
                 <span className="badge badge-pill badge-info ml-2">
                   {todo.priority}
                 </span>
@@ -27,7 +27,7 @@ const CardList = ({ todos, onClickCard, onHandleDelete }) => {
                 justify="center"
                 alignItems="center">
                     <Grid item>
-                        <button className="btn btn-danger" onClick={() => onHandleDelete(todo.cardid)}>
+                        <button className="btn btn-danger" onClick={() => onHandleDelete(todo.id)}>
                             Eliminar
                         </button>
                     </Grid>
@@ -62,7 +62,7 @@ const CardList = ({ todos, onClickCard, onHandleDelete }) => {
 CardList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            cardid: PropTypes.number.isRequired,
+            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             responsible: PropTypes.string.isRequired,
             descriton: PropTypes.string.isRequired,

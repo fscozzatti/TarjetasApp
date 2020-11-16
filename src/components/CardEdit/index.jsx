@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
 
-const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSubmit}) => {
+const CardEdit = ({ id, title, responsible, descriton, priority, onHandleSubmit}) => {
     const [ titulo, setTitulo ] = useState(title)
     const [ prioridad, setPrioridad ] = useState(priority)
     const [ descripcion, setDescripcion ] = useState(descriton)
@@ -13,7 +13,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
 
     function handleSubmit(event) {
       event.preventDefault();
-      onHandleSubmit(cardid, titulo, responsable, descripcion, prioridad)
+      onHandleSubmit(id, titulo, responsable, descripcion, prioridad)
       history.push("/main")
     }
   
@@ -51,7 +51,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
             <div className="col-md-6">
               <div className="card mt-6">
                 <div className="card-header" >
-                  <h3 className="card-title">Nro. de Tarjeta: {cardid}</h3>
+                  <h3 className="card-title">Nro. de Tarjeta: {id}</h3>
                 </div>
                 <div className="card-body">
                   <form onSubmit={handleSubmit}>
@@ -121,7 +121,7 @@ const CardEdit = ({ cardid, title, responsible, descriton, priority, onHandleSub
     )
 }
 CardEdit.propTypes = {
-    cardid: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     responsible: PropTypes.string.isRequired,
     descriton: PropTypes.string.isRequired,

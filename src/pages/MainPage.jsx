@@ -10,8 +10,8 @@ import Paper from '@material-ui/core/Paper'
 const MainPage = ({ todos, onHandleDelete, error, onSetError }) => {
     const history = useHistory()
 
-    const onClickHandler = useCallback((cardid) => {
-        history.push(`/cardid/${cardid}`)
+    const onClickHandler = useCallback((id) => {
+        history.push(`/id/${id}`)
     }, [history])
 
 
@@ -32,7 +32,7 @@ const MainPage = ({ todos, onHandleDelete, error, onSetError }) => {
 MainPage.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            cardid: PropTypes.number.isRequired,
+            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             responsible: PropTypes.string.isRequired,
             descriton: PropTypes.string.isRequired,

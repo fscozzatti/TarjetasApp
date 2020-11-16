@@ -17,7 +17,7 @@ const App2 = () => {
         try {
             const response = await axios({
                 url: 'http://localhost:3001/todos',
-                method: 'get'
+                method: 'GET'
             })
             if (!ignore){
                 setTodos1(response.data)
@@ -39,11 +39,11 @@ const App2 = () => {
     }, []);
 
 
-    const handleSubmit = ( cardid, titulo, responsable, descripcion, prioridad ) => {
-        const isLargeNumber = (element) => element.cardid === cardid;
+    const handleSubmit = ( id, titulo, responsable, descripcion, prioridad ) => {
+        const isLargeNumber = (element) => element.id === id;
         const index = todos1.findIndex(isLargeNumber)
         const todo = {
-            cardid: cardid,
+            id: id,
             title: titulo,
             responsible: responsable,
             priority: prioridad,
@@ -53,19 +53,20 @@ const App2 = () => {
             todos1.splice( index, 1, todo)
             setTodos1(todos1)               
         }else{
-            //[ todos ] = [ ...todos, todo]
             setTodos1([ ...todos1, todo])      
         }
     }
     
-    const handleDelete = ( cardid ) =>{
-        const isLargeNumber = (element) => element.cardid === cardid;
+    const handleDelete = ( id ) =>{
+        console.log('entra aaca!: ', id)
+        axios.delete('http://localhost:3001/todos/' + id + '/')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        const isLargeNumber = (element) => element.id === id;
         const index = todos1.findIndex(isLargeNumber)
         todos1.splice( index, 1)
-        for ( var i = 0; i < todos1.length ; i++) {
-            const j = i + 1
-            todos1[i].cardid = j
-        }
         setTodos1([...todos1]) 
     }
 
@@ -78,15 +79,15 @@ const App2 = () => {
                     </Route>
                     <Route path="/main">
                         <MainPage todos={todos1}
-                          onHandleDelete={ (cardid) => handleDelete(cardid)}
+                          onHandleDelete={ (id) => handleDelete(id)}
                           error={error}
                           onSetError={(val) => setError(val)}
                         >
                         </MainPage>
                     </Route>
-                    <Route path="/cardid/:cardid">
+                    <Route path="/id/:id">
                         <CardPage todos={todos1}
-                        onHandleSubmit={ (cardid, titulo, responsable, descripcion, prioridad) => handleSubmit(cardid, titulo, responsable, descripcion, prioridad)}   
+                        onHandleSubmit={ ( id, titulo, responsable, descripcion, prioridad) => handleSubmit(id, titulo, responsable, descripcion, prioridad)}   
                         ></CardPage>
                     </Route>
                     <Route>
