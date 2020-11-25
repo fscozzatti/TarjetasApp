@@ -51,18 +51,21 @@ const App2 = () => {
             }
         if (index !== -1 ){
             todos1.splice( index, 1, todo)
-            setTodos1(todos1)               
+            setTodos1(todos1) 
+            axios.put('http://localhost:3001/todos/' + id, todo)
+            .then(res => {
+            })   
         }else{
-            setTodos1([ ...todos1, todo])      
+            setTodos1([ ...todos1, todo])  
+            axios.post('http://localhost:3001/todos', todo)
+            .then(res => {
+            })   
         }
     }
     
     const handleDelete = ( id ) =>{
-        console.log('entra aaca!: ', id)
         axios.delete('http://localhost:3001/todos/' + id + '/')
         .then(res => {
-            console.log(res);
-            console.log(res.data);
         })
         const isLargeNumber = (element) => element.id === id;
         const index = todos1.findIndex(isLargeNumber)
