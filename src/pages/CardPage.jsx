@@ -9,7 +9,9 @@ import CardEdit from './../components/CardEdit'
 
 const CardPage = ({ todos , onHandleSubmit }) => {
     const { id } = useParams()
-    const newid = todos.length + 1
+    var newid = 0
+    todos.forEach( todo => { if(todo.id > newid ) {newid = todo.id}})
+    newid += 1 
     let todo = { id:newid, title: '', responsible:'', descriton:'', priority:'alta'}
     if( Number(id) !== 0){
         todo = todos.find( i => i.id === Number(id)) 
