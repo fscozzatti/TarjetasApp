@@ -7,13 +7,12 @@ import AppFrame from './../components/AppFrame'
 import Paper from '@material-ui/core/Paper'
 
 
-const MainPage = ({ todos, onHandleDelete, error, onSetError }) => {
+const MainPage = ({ todos, onHandleDelete, error, onSetError, onSetQ }) => {
     const history = useHistory()
 
     const onClickHandler = useCallback((id) => {
         history.push(`/id/${id}`)
     }, [history])
-
 
     return (
         <AppFrame>
@@ -23,7 +22,8 @@ const MainPage = ({ todos, onHandleDelete, error, onSetError }) => {
             <Paper elevation={3}>
                 <CardList todos={todos}
                     onClickCard={onClickHandler} 
-                    onHandleDelete={onHandleDelete}/>
+                    onHandleDelete={onHandleDelete}
+                    onSetQ={onSetQ}/>
             </Paper>
         </AppFrame>
     )
@@ -39,6 +39,7 @@ MainPage.propTypes = {
             priority: PropTypes.string.isRequired,
         })
     ).isRequired,
+    onSetQ: PropTypes.func.isRequired,
 }
 
 export default MainPage

@@ -10,11 +10,13 @@ const App2 = () => {
     
     const [todos1, setTodos1 ] = useState([])
     const [error, setError] = useState(null)
+    const [q , setQ ] = useState("")
 
     useEffect(() => {  
     async function fetchData() {
-    await axios.get('/todos.json')
-        .then(resAux => setTodos1(resAux.data))
+    await axios.get('https://app-tarjetas-fs.firebaseio.com/todos.json')
+        .then(resAux => {
+            setTodos1(resAux.data)})
         .catch( (err) => {
             if (err.response) { // Errores que nos responde el server
                 setError("Ha ocurrido un error en el servidor de tarjetas")
@@ -31,7 +33,7 @@ const App2 = () => {
     }, []);
 
     async function putData(todos1) {
-        await axios.put('/todos.json/', todos1)
+        await axios.put('https://app-tarjetas-fs.firebaseio.com/todos.json/', todos1)
         .then(res => { })        
         .catch( (err) => {
             if (err.response) { // Errores que nos responde el server
@@ -79,6 +81,10 @@ const App2 = () => {
         putData([ ...todos1])
 
     }
+    
+    function search(rows) {
+        return rows.filter((row) => row.responsible.toLowerCase().indexOf(q) > -1)
+    }
 
     return (
             <Router>
@@ -88,16 +94,17 @@ const App2 = () => {
                         ></WelcomePage>
                     </Route>
                     <Route path="/main">
-                        <MainPage todos={todos1}
+                        <MainPage todos={search(todos1)}
                           onHandleDelete={ (id) => handleDelete(id)}
                           error={error}
                           onSetError={(val) => setError(val)}
+                          onSetQ= {(q) => setQ(q)}
                         >
                         </MainPage>
                     </Route>
                     <Route path="/id/:id">
                         <CardPage todos={todos1}
-                        onHandleSubmit={ ( id, titulo, responsable, descripcion, prioridad) => handleSubmit(id, titulo, responsable, descripcion, prioridad)}   
+                        onHandleSubmit={ ( id, titulo, responsable, descripcion, prioridad) => handleSubmit(id, titulo, responsable, descripcion, prioridad)}  
                         ></CardPage>
                     </Route>
                     <Route>

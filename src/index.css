@@ -33,3 +33,7 @@ code {
 .containerCard {
   background-color: white;
 }
+
+.inputLargo {
+  width: 300px;
+}

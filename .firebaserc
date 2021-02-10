@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "app-tarjetas-fs"
+    "default": "app-tarjetas-fs",
+    "n": "app-tarjetas-fs"
   }
 }

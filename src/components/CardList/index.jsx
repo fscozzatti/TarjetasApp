@@ -4,8 +4,7 @@ import Grid from '@material-ui/core/Grid'
 
 
 
-const CardList = ({ todos, onClickCard, onHandleDelete }) => {
-
+const CardList = ({ todos, onClickCard, onHandleDelete, onSetQ }) => {
     const todos2 = todos.map((todo, i) => {
         return (
           <div className="col-md-4" key={todo.id}>
@@ -46,6 +45,9 @@ const CardList = ({ todos, onClickCard, onHandleDelete }) => {
                 {todos2.length}
               </span>
             </div>
+            <div href=""> 
+              <input type="text" placeholder="Buscar tarea por Responsable" onChange={(e) => onSetQ(e.target.value)} className="inputLargo"></input>
+            </div>
             <button type="button" className="btn-primary" onClick={() => onClickCard(0)}>Insertar Tarjeta</button>
           </nav>
           <div className="container">
@@ -70,6 +72,7 @@ CardList.propTypes = {
         })
     ).isRequired,
     onClickCard: PropTypes.func.isRequired,
+    onSetQ: PropTypes.func.isRequired,
 }
 
 export default CardList

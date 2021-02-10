@@ -8,7 +8,6 @@ import { IconContext } from 'react-icons'
 import { BsFillGrid3X3GapFill } from 'react-icons/bs'
 
 const WelcomePage = () => {
-    
     return (
         <WelcomeScreen>
             <Grid container

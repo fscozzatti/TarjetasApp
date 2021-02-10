@@ -7,7 +7,7 @@ import CardEdit from './../components/CardEdit'
 
 
 
-const CardPage = ({ todos , onHandleSubmit }) => {
+const CardPage = ({ todos , onHandleSubmit}) => {
     const { id } = useParams()
     var newid = 0
     todos.forEach( todo => { if(todo.id > newid ) {newid = todo.id}})
