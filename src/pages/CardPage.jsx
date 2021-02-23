@@ -7,7 +7,7 @@ import CardEdit from './../components/CardEdit'
 
 
 
-const CardPage = ({ todos , onHandleSubmit}) => {
+const CardPage = ({ todos , onHandleSubmit, onSetQ}) => {
     const { id } = useParams()
     var newid = 0
     todos.forEach( todo => { if(todo.id > newid ) {newid = todo.id}})
@@ -25,6 +25,7 @@ const CardPage = ({ todos , onHandleSubmit}) => {
                 descriton={todo.descriton}
                 priority={todo.priority}
                 onHandleSubmit={onHandleSubmit}
+                onSetQ={onSetQ}
                 ></CardEdit>
         </AppFrame>
     )
@@ -41,6 +42,7 @@ CardPage.propTypes = {
         })
     ).isRequired,
     onHandleSubmit: PropTypes.func.isRequired,
+    onSetQ: PropTypes.func.isRequired,
 }
 
 

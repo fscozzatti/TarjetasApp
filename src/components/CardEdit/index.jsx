@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 
 
-const CardEdit = ({ id, title, responsible, descriton, priority, onHandleSubmit}) => {
+const CardEdit = ({ id, title, responsible, descriton, priority, onHandleSubmit, onSetQ}) => {
     const [ titulo, setTitulo ] = useState(title)
     const [ prioridad, setPrioridad ] = useState(priority)
     const [ descripcion, setDescripcion ] = useState(descriton)
@@ -105,7 +105,7 @@ const CardEdit = ({ id, title, responsible, descriton, priority, onHandleSubmit}
                       justify="center"
                       alignItems="center">
                           <Grid item>
-                              <button type="submit" className="btn btn-success" >
+                              <button type="submit" className="btn btn-success" onClick={(e) => onSetQ("")}>
                                   Confirmar
                               </button>
                           </Grid>
@@ -127,6 +127,7 @@ CardEdit.propTypes = {
     descriton: PropTypes.string.isRequired,
     priority: PropTypes.string.isRequired,
     onHandleSubmit: PropTypes.func.isRequired,
+    onSetQ: PropTypes.func.isRequired,
 }
 
 export default CardEdit

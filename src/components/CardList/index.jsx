@@ -26,7 +26,8 @@ const CardList = ({ todos, onClickCard, onHandleDelete, onSetQ }) => {
                 justify="center"
                 alignItems="center">
                     <Grid item>
-                        <button className="btn btn-danger" onClick={() => onHandleDelete(todo.id)}>
+                        <button className="btn btn-danger" onClick={() => {onHandleDelete(todo.id)
+                        onSetQ("")}}>
                             Eliminar
                         </button>
                     </Grid>

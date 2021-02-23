@@ -28,8 +28,9 @@ const App2 = () => {
             }
         })  
     }
-  
-      fetchData()
+
+        fetchData()
+    
     }, []);
 
     async function putData(todos1) {
@@ -63,8 +64,8 @@ const App2 = () => {
             }
         if (index !== -1 ){
             todos1.splice( index, 1, todo)
-            setTodos1(todos1) 
             putData(todos1)
+            setTodos1([...todos1]) 
 
         }else{
             setTodos1([ ...todos1, todo]) 
@@ -83,7 +84,7 @@ const App2 = () => {
     }
     
     function search(rows) {
-        return rows.filter((row) => row.responsible.toLowerCase().indexOf(q) > -1)
+        return rows.filter((row) => row.responsible.toLowerCase().indexOf(q.toLowerCase()) > -1)
     }
 
     return (
@@ -105,6 +106,7 @@ const App2 = () => {
                     <Route path="/id/:id">
                         <CardPage todos={todos1}
                         onHandleSubmit={ ( id, titulo, responsable, descripcion, prioridad) => handleSubmit(id, titulo, responsable, descripcion, prioridad)}  
+                        onSetQ= {(q) => setQ(q)}
                         ></CardPage>
                     </Route>
                     <Route>
